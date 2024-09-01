@@ -6,14 +6,16 @@ import Column from "./components/Column";
 
 function App() {
   return (
-    <>
-      {/* <h1 className="heading">To DO</h1>
-      <Column category="Low Priority" bg="green" />
-      {/* <Column category="Medium Priority" bg="yellow" />
-      <Column category="High Priority" bg="red" />
-      <Column category="Completed" bg="blue" /> */}
-      <Column stageName="Low Priority" />
-    </>
+    <div className="mainContainer items-center flex-col w-auto mt-6 border border-red-500 inline-block">
+      <div className="heading m-4 border border-green-500">
+        <p>Tasks</p>
+      </div>
+      <div className="column-container flex gap-8 border border-red-500">
+        <Column stageName="Low Priority" />
+        <Column stageName="Medium Priority" />
+        <Column stageName="High Priority" />
+      </div>
+    </div>
   );
 }
 

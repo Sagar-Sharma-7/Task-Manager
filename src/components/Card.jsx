@@ -16,18 +16,18 @@ function Card({ key, id, task }) {
   }
 
   return (
-    <div>
+    <div className="bg-[#262626] border border-green-500 px-4 py-2">
       <input type="checkbox" name="checkbox" className="completeCheck" />
       <input
         type="text"
-        className="task"
+        className="task bg-transparent"
         value={todo}
         onChange={handleChange}
         disabled={true}
         name="task"
       />
       <button className="deleteTodo" onClick={handleDelete}>
-        x
+        <img src="delete.svg" alt="" />
       </button>
     </div>
   );

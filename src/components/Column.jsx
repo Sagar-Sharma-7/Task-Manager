@@ -15,23 +15,28 @@ function Column({ stageName }) {
     setNewTask("");
   };
   return (
-    <>
-      <div className="columnInfo">
+    <div className="flex flex-col">
+      <div className="column-info">
         <div className="name">{stageName}</div>
         <div className="count">{cards.length}</div>
       </div>
-      <div className="addcard">
-        <input type="text" onChange={writingTask} value={newTask} />
+      <div className="add-card">
+        <input
+          type="text"
+          onChange={writingTask}
+          value={newTask}
+          className="text-black"
+        />
         <button className="addTask" onClick={addCard}>
           + Add
         </button>
       </div>
-      <div className="cardContainer">
+      <div className="card-container">
         {cards.map((card) => (
           <Card key={card.id} id={card.id} task={card.task} />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 
