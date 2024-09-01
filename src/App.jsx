@@ -7,11 +7,12 @@ import Column from "./components/Column";
 function App() {
   return (
     <>
-      <h1 className="heading">To DO</h1>
+      {/* <h1 className="heading">To DO</h1>
       <Column category="Low Priority" bg="green" />
       {/* <Column category="Medium Priority" bg="yellow" />
       <Column category="High Priority" bg="red" />
       <Column category="Completed" bg="blue" /> */}
+      <Column stageName="Low Priority" />
     </>
   );
 }

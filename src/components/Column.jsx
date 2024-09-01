@@ -1,20 +1,18 @@
 import React from "react";
 import Card from "./Card";
 
-function Column({ category, bg }) {
+function Column({ stageName }) {
   return (
-    <div>
-      <div className="heading">
-        <div className="column" style={{ backgroundColor: bg }}>
-          {category}
-        </div>
+    <>
+      <div className="columnInfo">
+        <div className="name">{stageName}</div>
         <div className="count">2</div>
       </div>
-      <div className="cards_container">
+      <button className="addTask">+ Add</button>
+      <div className="cardContainer">
         <Card />
       </div>
-      <button className="addBtn">+ New</button>
-    </div>
+    </>
   );
 }
 

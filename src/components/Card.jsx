@@ -1,30 +1,34 @@
 import React, { useState } from "react";
 
 function Card() {
-  const [isEditing, setIsEditing] = useState(true);
-  const [todo, setTodo] = useState("random shit");
-  const handleEdit = () => {
-    console.log("eh");
-    setIsEditing(false);
-  };
+  const [todo, setTodo] = useState("Random Shit");
+  const [isVisible, setIsVisible] = useState(true);
   const handleChange = (e) => {
     setTodo(e.target.value);
   };
+
+  const handleDelete = () => {
+    setIsVisible(false);
+  };
+
+  if (!isVisible) {
+    return null;
+  }
+
   return (
     <>
+      <input type="checkbox" name="task" id="completeCheck" />
       <input
         type="text"
-        className="taskName"
+        className="task"
+        id="task"
         value={todo}
         onChange={handleChange}
-        disabled={isEditing}
+        disabled={true}
       />
-      <div className="actions">
-        <button onClick={handleEdit} className="editBtn bg-slate-300 px-3">
-          e
-        </button>
-        <button className="completeBtn bg-orange-400 px-3">c</button>
-      </div>
+      <button className="deleteTodo" onClick={handleDelete}>
+        x
+      </button>
     </>
   );
 }
