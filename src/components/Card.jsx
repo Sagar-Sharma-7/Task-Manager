@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
-function Card({ key, id, task }) {
+function Card({ id, task }) {
   const [todo, setTodo] = useState(task);
+
   const [isVisible, setIsVisible] = useState(true);
   const handleChange = (e) => {
     setTodo(e.target.value);
@@ -24,7 +25,6 @@ function Card({ key, id, task }) {
         value={todo}
         onChange={handleChange}
         disabled={true}
-        name="task"
       />
       <button className="deleteTodo" onClick={handleDelete}>
         <img src="delete.svg" alt="" />

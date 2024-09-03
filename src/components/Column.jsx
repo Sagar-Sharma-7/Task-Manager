@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./Card";
 
-function Column({ stageName }) {
+function Column({ stageName, bg }) {
   const [cards, setCards] = useState([]);
   const [newTask, setNewTask] = useState();
 
+  useEffect(() => {
+    const savedCards = JSON.parse(localStorage.getItem(stageName));
+    if (savedCards) {
+      setCards(savedCards); // Load saved cards if they exist
+    }
+  }, []);
+  useEffect(() => {
+    if (cards.length > 0) {
+      localStorage.setItem(stageName, JSON.stringify(cards));
+    }
+  }, [cards]);
   const writingTask = (e) => {
     setNewTask(e.target.value);
   };
@@ -14,6 +25,12 @@ function Column({ stageName }) {
     setCards([...cards, newCard]);
     setNewTask("");
   };
+
+  const deleteCard = (id) => {
+    const updatedCards = cards.filter((card) => card.id !== id);
+    setCards(updatedCards);
+  };
+
   return (
     <div className="flex flex-col">
       <div className="column-info">
@@ -26,6 +43,7 @@ function Column({ stageName }) {
           onChange={writingTask}
           value={newTask}
           className="text-black"
+          id={bg}
         />
         <button className="addTask" onClick={addCard}>
           + Add
