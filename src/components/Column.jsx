@@ -8,11 +8,13 @@ function Column({ stageName, bg }) {
   useEffect(() => {
     const savedCards = JSON.parse(localStorage.getItem(stageName));
     if (savedCards) {
-      setCards(savedCards); // Load saved cards if they exist
+      setCards(savedCards);
     }
-  }, []);
+  }, [stageName]);
   useEffect(() => {
-    if (cards.length > 0) {
+    if (cards.length == 0) {
+      localStorage.removeItem(stageName);
+    } else {
       localStorage.setItem(stageName, JSON.stringify(cards));
     }
   }, [cards]);
@@ -51,7 +53,12 @@ function Column({ stageName, bg }) {
       </div>
       <div className="card-container">
         {cards.map((card) => (
-          <Card key={card.id} id={card.id} task={card.task} />
+          <Card
+            key={card.id}
+            id={card.id}
+            task={card.task}
+            deleteCard={deleteCard}
+          />
         ))}
       </div>
     </div>

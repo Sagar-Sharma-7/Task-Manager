@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Card({ id, task }) {
+function Card({ id, task, deleteCard }) {
   const [todo, setTodo] = useState(task);
 
   const [isVisible, setIsVisible] = useState(true);
@@ -10,6 +10,7 @@ function Card({ id, task }) {
 
   const handleDelete = () => {
     setIsVisible(false);
+    deleteCard(id);
   };
 
   if (!isVisible) {
