@@ -52,27 +52,22 @@ function Column({ stageName, bg }) {
     );
     setCards(updatedCards);
   };
-
+  const c = "#ffffff";
   return (
-    <div className="flex flex-col gap-2">
-      <div className="column-info flex gap-3">
-        <div className="name">{stageName}</div>
-        <div className="count text-sm flex justify-center align-middle w-6 h-6 rounded-full">
+    <div className="flex flex-col gap-4 p-4 rounded-lg bg-[#101205] h-full shadow-md shadow-[#2a5298] font-medium">
+      <div className="column-info flex justify-between items-center">
+        <div
+          className="name px-2 rounded py-1 opacity-80"
+          style={{ backgroundColor: bg }}
+        >
+          {stageName}
+        </div>
+        <div
+          className="count text-sm flex justify-center items-ce w-6 h-6 rounded-full font-medium"
+          style={{ color: bg }}
+        >
           {cards.length}
         </div>
-      </div>
-      <div className="add-card">
-        <input
-          type="text"
-          onChange={(e) => setNewTask(e.target.value)}
-          value={newTask}
-          className="text-black"
-          id={bg}
-          onKeyDown={handleKeyPress}
-        />
-        <button className="addTask" onClick={addCard}>
-          + Add
-        </button>
       </div>
       <div className="card-container flex flex-col gap-1">
         {cards.map((card) => (
@@ -85,6 +80,23 @@ function Column({ stageName, bg }) {
             updateCardCompletion={updateCardCompletion}
           />
         ))}
+      </div>
+      <div className="add-card flex justify-between ">
+        <input
+          type="text"
+          onChange={(e) => setNewTask(e.target.value)}
+          value={newTask}
+          className="text-[#B5BDC9] w-full bg-transparent rounded outline-none p-4 text-sm"
+          id={bg}
+          placeholder="Write your task here..."
+          onKeyDown={handleKeyPress}
+        />
+        {/* <button
+          className="addTask bg-blue-500 py-1 px-2 rounded hover:bg-blue-700"
+          onClick={addCard}
+        >
+          + Add
+        </button> */}
       </div>
     </div>
   );
