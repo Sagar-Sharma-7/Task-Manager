@@ -1,34 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 
-function Card({ id, task, deleteCard }) {
-  const [todo, setTodo] = useState(task);
-
-  const [isVisible, setIsVisible] = useState(true);
-  const handleChange = (e) => {
-    setTodo(e.target.value);
-  };
-
-  const handleDelete = () => {
-    setIsVisible(false);
-    deleteCard(id);
-  };
-
-  if (!isVisible) {
-    return null;
-  }
-
+function Card({ id, task, completed, deleteCard, updateCardCompletion }) {
   return (
-    <div className="bg-[#262626] border border-green-500 px-4 py-2">
-      <input type="checkbox" name="checkbox" className="completeCheck" />
-      <input
-        type="text"
-        className="task bg-transparent"
-        value={todo}
-        onChange={handleChange}
-        disabled={true}
-      />
-      <button className="deleteTodo" onClick={handleDelete}>
-        <img src="delete.svg" alt="" />
+    <div
+      className={`rounded px-4 py-4 flex ${
+        completed ? "bg-green-500" : "bg-[#262626]"
+      }`}
+    >
+      <div className="inputs flex gap-2 justify-center align-middle">
+        <input
+          type="checkbox"
+          name="checkbox"
+          className="completeCheck text-green-500"
+          checked={completed}
+          onChange={(e) => updateCardCompletion(id, e.target.checked)}
+        />
+        <input
+          type="text"
+          className="task bg-transparent"
+          value={task}
+          disabled={true}
+        />
+      </div>
+      <button className="deleteTodo w-6" onClick={() => deleteCard(id)}>
+        <img src="delete.svg" alt="" className="opacity-50 hover:opacity-100" />
       </button>
     </div>
   );

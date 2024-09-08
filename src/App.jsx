@@ -11,7 +11,7 @@ function App() {
         <img src="table.svg" alt="" className="w-6" />
         <p className="text-lg">Tasks</p>
       </div>
-      <div className="column-container flex gap-8 border border-red-500 my-4">
+      <div className="column-container flex gap-8 my-4">
         <Column stageName="Low Priority" bg="red" />
         <Column stageName="Medium Priority" bg="yellow" />
         <Column stageName="High Priority" bg="green" />
