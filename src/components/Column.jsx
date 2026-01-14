@@ -11,6 +11,11 @@ function Column({ stageName, bg }) {
     setCards(savedCards); // Load cards only once when the component mounts
   }, [stageName]);
 
+  // Save cards to localStorage whenever they change, including empty arrays - (--Contribution--)
+  useEffect(() => {
+    localStorage.setItem(stageName, JSON.stringify(cards));
+  }, [cards, stageName]); 
+
   // Save cards to localStorage whenever they change
   useEffect(() => {
     // Save to localStorage only if there are cards, and don't touch localStorage if there are none

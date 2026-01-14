@@ -1,6 +1,16 @@
 import React from "react";
 
 function Card({ id, task, completed, deleteCard, updateCardCompletion }) {
+
+  // Contribution
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentTask, setCurrentTask] = useState(task);
+
+  const handleBlur = () => {
+    setIsEditing(false);
+    updateTaskText(id, currentTask);
+  };
+
   return (
     <div
       className={`rounded-lg shadow-md shadow-[#101010] px-4 py-4 flex gap-2w-full ${
